@@ -1,0 +1,47 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+<html>
+<head>
+ {% block title %}
+     display page
+ {% endblock %}
+</head>
+<body>
+{% block content %}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col" >NAME</th>
+                <th scope="col">DOB</th>
+                <th scope="col">GENDER</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">PHONE</th>
+                <th scope="col">CITY</th>
+                <th scope="col">ACTIONS</th>
+            </tr>
+        </thead>
+
+        <tbody>
+           {% for a in authors %}
+              <tr>
+                  <td>{{a.authorname}}</td>
+                  <td>{{a.authordob}}</td>
+                  <td>{{a.authorgender}}</td>
+                  <td>{{a.authoremail}}</td>
+                  <td>{{a.authorphone}}</td>
+                  <td>{{a.authorcity}}</td>
+                  <td>
+                      <a class="btn btn-outline-warning" href="{% url 'editauthor' a.id %}">EDIT</a>
+                      <a class="btn btn-outline-danger" href="{% url 'deleteauthor' a.id %}">DELETE</a>
+                  </td>
+              </tr>
+           {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
+
+</body>
+</html>

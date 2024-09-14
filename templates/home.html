@@ -1,0 +1,26 @@
+{% extends 'basic.html' %}
+{% load static %}
+    {% block title %}
+        Home page
+    {% endblock %}
+
+{% block content %}
+<BR/>
+<div class="container" align="center">
+<div class="card" style="width:40rem;">
+    <a href="{% static 'images/bsm1.jpg' %}">
+  <img src="{% static 'images/bookstore.jpg' %}" height="370px" width="210px" class="card-img-top" alt="...">
+  </a>
+    <div class="card-body">
+    <h5 class="card-title">BOOK STORE MANAGEMENT</h5>
+    <p class="card-text">MANAGE THE AUTHOR INFORMATION</p>
+    <a href="{% url 'addauthor' %}" class="btn btn-outline-success"> ADD AUTHOR </a>
+   <a href="{% url 'displayauthor' %}" class="btn btn-outline-info"> DISPLAY AUTHOR </a> <br/><br/>
+    <a href="{% url 'addbook' %}" class="btn btn-outline-success"> ADD BOOK </a>
+   <a href="{% url 'displaybook' %}" class="btn btn-outline-info"> DISPLAY BOOK </a>
+
+  </div>
+
+</div>
+</div>
+{% endblock %}

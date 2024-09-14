@@ -1,0 +1,38 @@
+{% extends 'basic.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+        ADD_BOOK PAGE
+    {% endblock%}
+</head>
+<body>
+{% block content %}
+<div class="container text-center pt-3">
+    <form action="#" method="post">
+        {% csrf_token %}
+        <input type="text" class="form-control" name="book_name" placeholder="book name"/> <br/><br/>
+        <input type="text" class="form-control"  name="book_descp" placeholder="book description"/> <br/><br/>
+        <input type="date" class="form-control" name="bookpub"/><br/>
+        <input type="text" class="form-control"  name="book_price" placeholder="book price"/> <br/><br/>
+        <select name="book_author"  class="form-control" >
+            <option> --SELECT AUTHOR--</option>
+            {% for author in authors %}
+            <option>{{author.authorname}}</option>
+            {% endfor %}
+        </select> <br/><br/>
+
+        <select name="book_category"  class="form-control" >
+            <option> --SELECT CATEGORY--</option>
+            {% for category in categories %}
+            <option>{{category.categoryname}}</option>
+            {% endfor %}
+        </select> <br/><br/>
+        <input type="submit" class="btn btn-outline-primary" value="ADD BOOK DETAILS"/>
+    </form>
+</div>
+
+{% endblock %}
+</body>
+</html>

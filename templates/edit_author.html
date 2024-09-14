@@ -1,0 +1,34 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+<html>
+<head>
+{% block title %}
+    EDIT_AUTHOR PAGE
+{% endblock %}
+</head>
+<body>
+{% block content %}
+<form method="post" class="container text-center">
+    {% csrf_token %}
+    <input type="text" class="form-control" name="auth_name" value="{{author.authorname}}"/> <br/>
+    <input type="date" name="auth_dob" class="form-control" value="{{author.authordob}}"/> <br/>
+    <B>GENDER</B><select name="ddlgender" class="form-control">
+    <option selected>{{author.authorgender}}</option>
+                     <option>MALE</option>
+                     <option>FEMALE</option>
+</select><br/><br/>
+    <input type="text" name="auth_email" class="form-control" value="{{author.authoremail}}" /> <br/>
+    <input type="number" name="auth_phone" class="form-control" value="{{author.authorphone}}" /> <br/>
+    <select name="ddlcity" id="auth_city" class="form-control">
+        <option selected>{{author.authorcity.cityname}}</option>
+        {% for c in city %}
+        <option>{{c.cityname}}</option>
+        {% endfor %}
+    </select> <br/><br/>
+    <input type="submit" value="eidt author" class="form-control">
+
+</form>
+{% endblock %}
+</body>
+</html>

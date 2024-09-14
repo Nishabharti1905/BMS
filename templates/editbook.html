@@ -1,0 +1,38 @@
+{% extends 'basic.html' %}
+{% load static %}
+<html>
+<head>
+    {% block title %}
+        EDIT BOOK PAGE
+    {% endblock %}
+</head>
+<body>
+
+{% block content %}
+<form method="post" class="container text-center">
+    {% csrf_token %}
+    <input type="text" class="form-control" name="book_name" value="{{book.bookname}}"/> <br/><br/>
+    <input type="date" name="book_descp" class="form-control" value="{{book.bookdescription}}"/> <br/><br/>
+    <input type="text" name="bookpub" class="form-control" value="{{book.bookpublishedon}}"/> <br/><br/>
+    <input type="text" name="book_price" class="form-control" value="{{book.bookprice}}"/> <br/><br/>
+    <select name="book_author" class="form-control">
+        <option selected>{{book.bookauthor.authorname}}</option>
+        {% for authors in author %}
+        <option>{{authors.authorname}}</option>
+        {% endfor %}
+    </select> <br/><br/>
+
+    <select name="book_category" class="form-control">
+        <option selected>{{book.bookcategory.categoryname}}</option>
+        {% for categories in category %}
+        <option>{{categories.categoryname}}</option>
+        {% endfor %}
+    </select> <br/><br/>
+    <input type="submit" value="EDIT BOOK" class="form-control"/>
+
+</form>
+{% endblock %}
+
+
+</body>
+</html>
